@@ -30,7 +30,7 @@ resource "aws_subnet" "ex_subnet_pub" {
     availability_zone           = "us-east-1b"
     map_public_ip_on_launch     = true
 
-    tags = var.tags_subnet
+    tags = var.tags_subnet_pub
 }
 
 #criação subnet privada
@@ -40,7 +40,7 @@ resource "aws_subnet" "ex_subnet_priv" {
     availability_zone           = "us-east-1b"
     map_public_ip_on_launch     = true
 
-    tags = var.tags_subnet
+    tags = var.tags_subnet_priv
 }
 
 #Criação Gateway | aponte para vpc
@@ -113,6 +113,7 @@ resource "aws_security_group" "exemplo_SG" {
     to_port     = 0
     protocol    = -1
     cidr_blocks = ["0.0.0.0/0"]
+  }
 }
 
 # Criando uma Network ACL (ACL de Rede)
@@ -147,6 +148,7 @@ resource "aws_instance" "instanciaEC2_exemplo" {
     tags = var.tags_instance
 }
 
+#Essa função exporta o ip publico da instancia para um arquivo hosts.yml que pode ser usado pelo ansible para execução de comandos remotos.
 resource "local_file" "create_hosts_yml" {
   content = <<-DOC
  all:

@@ -69,24 +69,3 @@ variable "nome_sg" {
   description = "Nome do Security group criado"
 }
 
-
-
-
-
-
-
-
-/*
-variable SG_BlocoTeste {
-  type        = string
-  description = "Teste de SG por variavel"
-}
-
-variable tags_acl {
-    type = object({
-        Name = string
-    })
-    description = "tags da acl"
-}
-*/
-
